@@ -6,30 +6,107 @@
     <div class="col-6">
       <h1>Enter Info</h1>
       <hr />
-      <form action="{% url 'resume_form' %}" method="POST">
+      <form method="POST">
         {% csrf_token %}
-        <!-- Contact Info -->
-        <div id="contact-info">
-          <h4>Contact Info</h4>
-          {{contact_form|crispy}}
-          <button
-            class="btn btn-outline-danger btn-block"
-            id="contact-next-btn"
-          >
-            Next
-          </button>
+        <!-- Start Contact Info -->
+        <div id="contact-info-form-group" class="d-none">
+          <!-- First Name -->
+          <div class="form-group">
+            <label for="first-name-input">First Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="first-name-input"
+              placeholder="Enter first name..."
+            />
+          </div>
+          <!-- Last Name -->
+          <div class="form-group">
+            <label for="last-name-input">Last Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="last-name-input"
+              placeholder="Enter last name..."
+            />
+          </div>
+          <!-- Phone -->
+          <div class="form-group">
+            <label for="phone-number-input">Phone Number</label>
+            <input
+              type="text"
+              class="form-control"
+              id="phone-number-input"
+              placeholder="Enter phone number..."
+            />
+          </div>
+          <!-- Email -->
+          <div class="form-group">
+            <label for="email-input">Email</label>
+            <input
+              type="text"
+              class="form-control"
+              id="email-input"
+              placeholder="Enter email..."
+            />
+          </div>
+          <!-- Next Button-->
+          <div class="btn-group btn-block">
+            <button class="btn btn-danger" id="contact-next-btn">Next</button>
+          </div>
         </div>
         <!-- End Contact Info -->
-        <!-- Education -->
-        <div class="d-none" id="education">
-          <h4>Education</h4>
-          {{education_form|crispy}}
-          <input
-            type="submit"
-            class="btn btn-block btn-danger"
-            value="Download Resume"
-          />
+        <!-- Start Education -->
+        <div id="education-form-group">
+          <div id="education-form">
+            <h5>Education</h5>
+            <!-- School -->
+            <div class="form-group">
+              <label for="school-name-input">School</label>
+              <input
+                type="text"
+                class="form-control school-name-input"
+                id="school-name-input"
+                data-education="0"
+                placeholder="Enter school name..."
+              />
+            </div>
+            <!-- Major -->
+            <div class="form-group">
+              <label for="major-input">Major</label>
+              <input
+                type="text"
+                class="form-control"
+                id="major-input"
+                placeholder="Enter major..."
+              />
+            </div>
+            <!-- GPA -->
+            <div class="form-group">
+              <label for="gpa-input">GPA</label>
+              <input
+                type="text"
+                class="form-control"
+                id="gpa-input"
+                placeholder="Enter GPA..."
+              />
+            </div>
+          </div>
+          <!-- Add Education Group Button -->
+          <div class="text-right">
+            <button class="btn btn-warning btn-sm my-2 add-education-btn">
+              <i class="fas fa-plus"></i> Add Education
+            </button>
+          </div>
+          <!-- Previous / Next Button-->
+          <div class="btn-group btn-block">
+            <button class="btn btn-outline-danger" id="education-prev-btn">
+              Previous
+            </button>
+            <button class="btn btn-danger" id="education-next-btn">Next</button>
+          </div>
         </div>
+
         <!-- End Education -->
       </form>
     </div>

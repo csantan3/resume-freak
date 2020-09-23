@@ -10,33 +10,8 @@ from django.template.loader import get_template
 
 
 def resume_form(request):
-    # if this is a POST request we need to process the form data
-    if request.method == 'POST':
-        # get the end user's resume
-        device_id = uuid.UUID(request.COOKIES['device'])
-        current_user = get_end_user(request.user, device_id)
-        resume = Resume.objects.get_or_create(end_user=current_user)[
-            0]  # remove the tuple
-        # create a form instance and populate it with data from the request:
-        contact_form = ContactInfoForm(request.POST)
-        if contact_form.is_valid():
-            contact_info = contact_form.save()
-            # add contact info to end user's resume
-            resume.contact_info = contact_info
-            resume.save()
-
-            education_form = EducationForm(request.POST)
-            if education_form.is_valid():
-                education = education_form.save()
-                education.resume = resume
-                education.save()
-
-        return redirect("/download_pdf/")
-    # if a GET (or any other method) we'll create a blank form
-    else:
-        context = {'contact_form': ContactInfoForm(
-        ), 'education_form': EducationForm()}
-        return render(request, 'resume_builder/resume_form.html', context)
+    context = {}
+    return render(request, 'resume_builder/resume_form.html', context)
 
 
 def resume(request, pk):

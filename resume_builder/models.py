@@ -63,7 +63,7 @@ class Resume(models.Model):
 class Education(models.Model):
     school = models.CharField(max_length=50)
     major = models.CharField(max_length=50, null=True, blank=True)
-    start_date = models.DateField(auto_now=False, auto_now_add=False)
+    start_date = models.DateField(auto_now=False, auto_now_add=False, null=True, blank=True)
     end_date = models.DateField(
         auto_now=False, auto_now_add=False, null=True, blank=True)
     gpa = models.DecimalField(
